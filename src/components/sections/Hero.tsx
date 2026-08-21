@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { NetworkCanvas } from "@/components/visual/NetworkCanvas";
 import { RouteLine } from "@/components/motion/RouteLine";
@@ -19,6 +20,23 @@ const NARRATIVE = [
 
 export function Hero() {
   const reducedMotion = usePrefersReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Under reduced motion, pause on whatever frame is already loaded
+  // instead of autoplaying/looping — an imperative pause/play here
+  // (rather than toggling the `autoPlay` prop) also covers the case
+  // where reducedMotion corrects itself a moment after mount, since
+  // autoplay would already be underway by then.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (reducedMotion) {
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+  }, [reducedMotion]);
+
   // Under reduced motion, `initial` is set to the same values as
   // `animate` so there's nothing to interpolate — the element simply
   // renders at rest, regardless of the transition's delay/duration.
@@ -38,15 +56,20 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-hero-bg)]">
-      <Image
-        src="/images/hero-bg.jpg"
-        alt=""
+      <video
+        ref={videoRef}
+        poster="/images/hero-bg-poster.jpg"
         aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_65%] opacity-60"
-      />
+        autoPlay={!reducedMotion}
+        loop={!reducedMotion}
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover object-[center_65%] opacity-60"
+      >
+        <source src="/videos/hero-bg.webm" type="video/webm" />
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
       <NetworkCanvas
         className="absolute inset-0"
         density={13000}
