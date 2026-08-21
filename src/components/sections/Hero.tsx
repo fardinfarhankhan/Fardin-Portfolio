@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { NetworkCanvas } from "@/components/visual/NetworkCanvas";
@@ -46,6 +47,25 @@ export function Hero() {
         colorVar="--color-hero-line"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-hero-bg)] via-transparent to-[var(--color-hero-bg)]/40" />
+
+      <motion.div
+        key={reducedMotion ? "portrait-reduced" : "portrait-motion"}
+        initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: DURATION.signature, ease: EASE.enter, delay: reducedMotion ? 0 : 1.9 }}
+        className="pointer-events-none absolute bottom-16 right-5 hidden w-[240px] overflow-hidden rounded-sm border border-[var(--color-hero-fg)]/15 sm:right-8 lg:block xl:w-[280px]"
+        style={{ aspectRatio: "700 / 920" }}
+      >
+        <Image
+          src="/images/fardin-hero.jpg"
+          alt="Fardin Farhan Khan"
+          fill
+          priority
+          sizes="280px"
+          className="object-cover saturate-[0.9] contrast-[1.03] brightness-[0.96]"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-hero-bg)]/35 via-transparent to-transparent" />
+      </motion.div>
 
       <div className="relative mx-auto flex min-h-[86svh] max-w-[1400px] flex-col justify-end px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
         <motion.p
