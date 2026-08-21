@@ -168,6 +168,8 @@ export const ACHIEVEMENTS: Achievement[] = [
  * shown as a compact list rather than individual achievement cards.
  */
 export const COURSE_CERTIFICATIONS: string[] = [
+  "Deep Learning for Beginners",
+  "Geospatial Foundations & Vector Analysis",
   "R for Researchers: Statistics, Visualization and Data Analysis",
   "Geospatial AI: Deep Learning for Satellite Imagery",
   "Coding the Brain: AI & Machine Learning for BCIs",
@@ -179,6 +181,7 @@ export const COURSE_CERTIFICATIONS: string[] = [
   "Machine Learning & Python Data Science for Business and AI",
   "Complete Guide to Python Data Analysis with Real Datasets",
   "Working with Project Managers & Project Sponsors",
+  "Developing Business Partnerships: The Complete Guide",
   "Strategic Partnership and Collaborations",
   "Business Operations Transformation with Generative AI",
   "BMS Global Introductory Guide",

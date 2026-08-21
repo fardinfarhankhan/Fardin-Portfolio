@@ -11,7 +11,7 @@ export const NAV_ROUTES: NavRoute[] = [
   { label: "Education", href: "/education" },
   { label: "Achievements", href: "/achievements" },
   { label: "Lab", href: "/lab" },
-  { label: "Field Notes", href: "/field-notes" },
+  { label: "Recommendations", href: "/recommendations" },
   { label: "Contact", href: "/contact" },
 ];
 
