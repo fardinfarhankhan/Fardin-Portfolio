@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
-import { PagePending } from "@/components/sections/PagePending";
+import { ProjectGrid } from "@/components/sections/ProjectGrid";
+import { Reveal } from "@/components/motion/Reveal";
+import { PROJECTS, PROJECT_CATEGORIES, BRAND_AFFILIATIONS } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "A searchable, filterable archive of Fardin Farhan Khan's transportation, engineering, research, and multidisciplinary project work.",
+    "A filterable archive of Fardin Farhan Khan's transportation, engineering, research, and multidisciplinary project work.",
 };
 
 export default function ProjectsPage() {
@@ -14,22 +16,29 @@ export default function ProjectsPage() {
       <PageHeader
         eyebrow="Projects"
         title="Project archive"
-        description="A filterable archive spanning transportation, engineering, research, consulting, and multidisciplinary project work."
+        description={`${PROJECTS.length} projects spanning transportation infrastructure, engineering consulting, and media, campaign, and event work.`}
       />
-      <PagePending
-        note="Each project — role, sector, scope, outcomes, and imagery — is being rebuilt from the original project portfolio, with filtering by category once every project is classified against real content."
-        items={[
-          "Transportation",
-          "Engineering",
-          "Research",
-          "Development",
-          "Consulting",
-          "Events",
-          "Media",
-          "Digital",
-          "International Development",
-        ]}
-      />
+
+      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20">
+        <ProjectGrid projects={PROJECTS} categories={PROJECT_CATEGORIES} />
+      </div>
+
+      <div className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16 sm:py-20">
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+          <Reveal>
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
+              Organizations & clients
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+              {BRAND_AFFILIATIONS.map((org) => (
+                <li key={org} className="text-sm text-[var(--color-ink-soft)]">
+                  {org}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </div>
     </>
   );
 }

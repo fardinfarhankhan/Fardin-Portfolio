@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_ROUTES, SITE_NAME } from "@/lib/routes";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { PROFILE } from "@/data/profile";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -64,6 +65,14 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <a
+            href={PROFILE.cvUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="hidden font-mono text-[0.7rem] uppercase tracking-[0.08em] text-[var(--color-mist)] transition-colors hover:text-[var(--color-accent)] sm:block"
+          >
+            CV ↗
+          </a>
           <ThemeToggle />
           <button
             type="button"
@@ -119,6 +128,16 @@ export function SiteNav() {
                 </li>
               );
             })}
+            <li className="pt-3">
+              <a
+                href={PROFILE.cvUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.08em] text-[var(--color-mist)]"
+              >
+                Download CV ↗
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
