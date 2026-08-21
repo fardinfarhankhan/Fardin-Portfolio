@@ -38,6 +38,15 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-hero-bg)]">
+      <Image
+        src="/images/hero-bg.jpg"
+        alt=""
+        aria-hidden
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[center_65%] opacity-60"
+      />
       <NetworkCanvas
         className="absolute inset-0"
         density={13000}
@@ -46,7 +55,9 @@ export function Hero() {
         linkDistance={160}
         colorVar="--color-hero-line"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-hero-bg)] via-transparent to-[var(--color-hero-bg)]/40" />
+      <div className="pointer-events-none absolute inset-0 bg-[var(--color-hero-bg)]/55" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-hero-bg)] via-[var(--color-hero-bg)]/25 to-[var(--color-hero-bg)]/50" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--color-hero-bg)]/70 via-transparent to-transparent" />
 
       <motion.div
         key={reducedMotion ? "portrait-reduced" : "portrait-motion"}
