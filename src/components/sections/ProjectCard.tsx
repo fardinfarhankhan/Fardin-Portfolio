@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const chips = project.tags ?? project.sector ?? [];
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -17,7 +19,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           {String(index).padStart(2, "0")}
         </span>
         <div className="flex flex-wrap gap-1.5">
-          {project.sector.slice(0, 3).map((s) => (
+          {chips.slice(0, 3).map((s) => (
             <span
               key={s}
               className="rounded-full border border-[var(--color-line)] px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-[var(--color-mist)]"

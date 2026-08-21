@@ -53,7 +53,7 @@ export default async function ProjectDetailPage({
           </Link>
 
           <div className="mt-6 flex flex-wrap gap-1.5">
-            {project.sector.map((s) => (
+            {(project.tags ?? project.sector ?? []).map((s) => (
               <span
                 key={s}
                 className="rounded-full border border-[var(--color-hero-fg)]/25 px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-[var(--color-hero-fg)]/70"
@@ -68,6 +68,10 @@ export default async function ProjectDetailPage({
           </h1>
 
           <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs text-[var(--color-hero-fg)]/60">
+            <div className="flex gap-2">
+              <dt className="text-[var(--color-hero-fg)]/40">Category</dt>
+              <dd>{project.group}</dd>
+            </div>
             {project.year && (
               <div className="flex gap-2">
                 <dt className="text-[var(--color-hero-fg)]/40">Year</dt>
@@ -96,12 +100,30 @@ export default async function ProjectDetailPage({
             Overview
           </p>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            {project.summary}
+            {project.description ?? project.summary}
           </p>
         </Reveal>
 
+        {project.contribution && project.contribution.length > 0 && (
+          <Reveal delayMs={80} className="mt-12">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
+              Contribution
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.contribution.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-full border border-[var(--color-line)] px-3 py-1 text-sm text-[var(--color-ink-soft)]"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+        )}
+
         {project.link && (
-          <Reveal delayMs={80} className="mt-10">
+          <Reveal delayMs={160} className="mt-12">
             <a
               href={project.link}
               target="_blank"
@@ -122,16 +144,6 @@ export default async function ProjectDetailPage({
             </a>
           </Reveal>
         )}
-
-        <Reveal delayMs={120} className="mt-16 rounded-2xl border border-dashed border-[var(--color-line)] px-6 py-8 sm:px-10">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-mist)]">
-            Gallery
-          </p>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-[var(--color-mist)]">
-            No verified imagery is available for this project yet. Original photography or
-            documentation will be added here once sourced.
-          </p>
-        </Reveal>
       </div>
     </>
   );

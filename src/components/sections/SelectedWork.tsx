@@ -37,7 +37,7 @@ export function SelectedWork() {
               >
                 <div>
                   <div className="flex flex-wrap gap-1.5">
-                    {project.sector.slice(0, 2).map((s) => (
+                    {(project.tags ?? project.sector ?? []).slice(0, 2).map((s) => (
                       <span
                         key={s}
                         className="rounded-full border border-[var(--color-line)] px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-[var(--color-mist)]"

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ProjectGrid } from "@/components/sections/ProjectGrid";
 import { Reveal } from "@/components/motion/Reveal";
-import { PROJECTS, PROJECT_CATEGORIES, BRAND_AFFILIATIONS } from "@/data/projects";
+import { PROJECTS, PROJECT_GROUPS, BRAND_AFFILIATIONS } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -20,7 +20,7 @@ export default function ProjectsPage() {
       />
 
       <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20">
-        <ProjectGrid projects={PROJECTS} categories={PROJECT_CATEGORIES} />
+        <ProjectGrid projects={PROJECTS} groups={PROJECT_GROUPS} />
       </div>
 
       <div className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16 sm:py-20">
