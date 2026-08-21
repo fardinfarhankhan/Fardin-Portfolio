@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import { SiteNav } from "@/components/chrome/SiteNav";
 import { SiteFooter } from "@/components/chrome/SiteFooter";
+import { PROFILE } from "@/data/profile";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,6 +54,24 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PROFILE.name,
+  email: PROFILE.email,
+  jobTitle: "Assistant Manager, Business Development",
+  worksFor: {
+    "@type": "Organization",
+    name: "SMEC International Pty Ltd.",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dhaka",
+    addressCountry: "BD",
+  },
+  sameAs: [PROFILE.social.linkedin, PROFILE.social.researchgate, PROFILE.social.facebook],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -61,6 +80,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeScript />
         <ThemeProvider>
           <a href="#main" className="skip-link">

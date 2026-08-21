@@ -8,6 +8,57 @@ export const metadata: Metadata = {
   description: "Get in touch with Fardin Farhan Khan.",
 };
 
+const ArrowIcon = () => (
+  <svg
+    aria-hidden
+    viewBox="0 0 16 16"
+    className="h-4 w-4 shrink-0 text-[var(--color-mist)] transition-colors group-hover:text-[var(--color-accent)]"
+  >
+    <path d="M3 13 13 3M6 3h7v7" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+function ContactRow({
+  label,
+  value,
+  href,
+  external,
+}: {
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+}) {
+  const content = (
+    <>
+      <span>
+        <span className="block font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-mist)]">
+          {label}
+        </span>
+        <span className="mt-1 block font-display text-xl font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] sm:text-2xl">
+          {value}
+        </span>
+      </span>
+      {href && <ArrowIcon />}
+    </>
+  );
+
+  if (!href) {
+    return <div className="flex items-center justify-between py-6">{content}</div>;
+  }
+
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer noopener" : undefined}
+      className="group flex items-center justify-between py-6 transition-colors hover:text-[var(--color-accent)]"
+    >
+      {content}
+    </a>
+  );
+}
+
 export default function ContactPage() {
   return (
     <>
@@ -16,50 +67,31 @@ export default function ContactPage() {
       <div className="mx-auto max-w-[900px] px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <div className="flex flex-col divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-            <a
-              href={`mailto:${PROFILE.email}`}
-              className="group flex items-center justify-between py-6 transition-colors hover:text-[var(--color-accent)]"
-            >
-              <span>
-                <span className="block font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-mist)]">
-                  Email
-                </span>
-                <span className="mt-1 block font-display text-xl font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] sm:text-2xl">
-                  {PROFILE.email}
-                </span>
-              </span>
-              <svg aria-hidden viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-[var(--color-mist)] transition-colors group-hover:text-[var(--color-accent)]">
-                <path d="M3 13 13 3M6 3h7v7" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
-            <a
+            <ContactRow label="Email" value={PROFILE.email} href={`mailto:${PROFILE.email}`} />
+            <ContactRow
+              label="Phone"
+              value={PROFILE.phone}
               href={`tel:${PROFILE.phone.replace(/\s+/g, "")}`}
-              className="group flex items-center justify-between py-6 transition-colors hover:text-[var(--color-accent)]"
-            >
-              <span>
-                <span className="block font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-mist)]">
-                  Phone
-                </span>
-                <span className="mt-1 block font-display text-xl font-medium text-[var(--color-ink)] group-hover:text-[var(--color-accent)] sm:text-2xl">
-                  {PROFILE.phone}
-                </span>
-              </span>
-              <svg aria-hidden viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-[var(--color-mist)] transition-colors group-hover:text-[var(--color-accent)]">
-                <path d="M3 13 13 3M6 3h7v7" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-
-            <div className="flex items-center justify-between py-6">
-              <span>
-                <span className="block font-mono text-[0.65rem] uppercase tracking-[0.15em] text-[var(--color-mist)]">
-                  Location
-                </span>
-                <span className="mt-1 block font-display text-xl font-medium text-[var(--color-ink)] sm:text-2xl">
-                  {PROFILE.location}
-                </span>
-              </span>
-            </div>
+            />
+            <ContactRow
+              label="LinkedIn"
+              value="linkedin.com/in/fardinkhan03"
+              href={PROFILE.social.linkedin}
+              external
+            />
+            <ContactRow
+              label="ResearchGate"
+              value="researchgate.net/profile/Fardin-Khan"
+              href={PROFILE.social.researchgate}
+              external
+            />
+            <ContactRow
+              label="Facebook"
+              value="facebook.com/TehBaittaGoat"
+              href={PROFILE.social.facebook}
+              external
+            />
+            <ContactRow label="Location" value={PROFILE.location} />
           </div>
         </Reveal>
 
@@ -82,10 +114,6 @@ export default function ContactPage() {
               />
             </svg>
           </a>
-          <p className="mt-4 text-xs text-[var(--color-mist)]">
-            LinkedIn and additional professional profile links will be added once their exact
-            URLs are confirmed.
-          </p>
         </Reveal>
       </div>
     </>

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { Reveal } from "@/components/motion/Reveal";
 import { ResearchMap } from "@/components/sections/ResearchMap";
 import { PUBLICATIONS, THESES, RESEARCH_PROJECTS, RESEARCH_SKILLS } from "@/data/research";
+import { PROFILE } from "@/data/profile";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -35,10 +36,21 @@ export default function ResearchPage() {
 
       <div className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16 sm:py-20">
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-          <Reveal>
+          <Reveal className="flex flex-wrap items-baseline justify-between gap-4">
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
               Publications &amp; working papers
             </p>
+            <a
+              href={PROFILE.social.researchgate}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.08em] text-[var(--color-mist)] transition-colors hover:text-[var(--color-accent)]"
+            >
+              Full profile on ResearchGate
+              <svg aria-hidden viewBox="0 0 12 12" className="h-3 w-3">
+                <path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </Reveal>
           <div className="mt-8 flex flex-col gap-8">
             {PUBLICATIONS.map((pub, i) => (

@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { NAV_ROUTES, SITE_NAME, SITE_TAGLINE } from "@/lib/routes";
 import { NetworkCanvas } from "@/components/visual/NetworkCanvas";
+import { PROFILE } from "@/data/profile";
+
+const SOCIAL_LINKS = [
+  { label: "Email", href: `mailto:${PROFILE.email}` },
+  { label: "LinkedIn", href: PROFILE.social.linkedin },
+  { label: "ResearchGate", href: PROFILE.social.researchgate },
+  { label: "Facebook", href: PROFILE.social.facebook },
+];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -41,8 +49,21 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col-reverse gap-3 border-t border-[var(--color-line)] pt-6 text-xs text-[var(--color-mist)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col-reverse gap-6 border-t border-[var(--color-line)] pt-6 text-xs text-[var(--color-mist)] sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} {SITE_NAME}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.label === "Email" ? undefined : "_blank"}
+                rel={social.label === "Email" ? undefined : "noreferrer noopener"}
+                className="transition-colors hover:text-[var(--color-accent)]"
+              >
+                {social.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

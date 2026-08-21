@@ -6,10 +6,16 @@
 export const PROFILE = {
   name: "Fardin Farhan Khan",
   location: "Dhaka, Bangladesh",
-  email: "fardinfarhan.grad@gmail.com",
+  email: "fardinkhanstj15@gmail.com",
   phone: "+880 1786434126",
   cvUrl:
     "https://onedrive.live.com/?id=%2Fpersonal%2F99ec525d83d72e25%2FDocuments%2F0%2E%20Personal%20Docs%2FResume%20and%20CV%2FResume%20and%20CV%5F2026%2FFardin%20Farhan%20Khan%5FCV%5F2026%2Epdf&listurl=%2Fpersonal%2F99ec525d83d72e25%2FDocuments&ithint=file%2Cpdf&e=UBsAjA&migratedtospo=true&parent=%2Fpersonal%2F99ec525d83d72e25%2FDocuments%2F0%2E%20Personal%20Docs%2FResume%20and%20CV%2FResume%20and%20CV%5F2026&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvYy85OWVjNTI1ZDgzZDcyZTI1L0lRQS1VbEhndWQ1RlRySG5RRHVJSXlkeUFYZ2YySHpvVFhCMFVIcnJJM0JPQzRjP2U9VUJzQWpB&ga=1",
+
+  social: {
+    linkedin: "https://www.linkedin.com/in/fardinkhan03",
+    researchgate: "https://www.researchgate.net/profile/Fardin-Khan",
+    facebook: "https://www.facebook.com/TehBaittaGoat",
+  },
 
   positioning: "Transportation · Data · Research · Infrastructure",
   narrative:
