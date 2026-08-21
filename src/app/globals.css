@@ -27,6 +27,22 @@
   --color-hero-fg: #f5f2ea;
 
   --shadow-soft: 0 1px 2px rgba(20, 22, 26, 0.04), 0 8px 24px rgba(20, 22, 26, 0.06);
+
+  /*
+    shadcn/ui-standard aliases, mapped onto the tokens above. Lets any
+    shadcn component (which expects --background/--foreground/etc.)
+    drop in and pick up this site's theme automatically, instead of
+    every component needing its Tailwind classes rewritten by hand.
+  */
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --muted-foreground: var(--color-mist);
+  --primary: var(--color-accent);
+  --primary-foreground: var(--color-accent-ink);
+  --secondary: var(--color-signal);
+  --secondary-foreground: var(--color-surface);
+  --border: var(--color-line);
+  --destructive: #c23b2f;
 }
 
 :root[data-theme="dark"] {
@@ -42,6 +58,16 @@
   --color-signal: #4fd6b4;
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --muted-foreground: var(--color-mist);
+  --primary: var(--color-accent);
+  --primary-foreground: var(--color-accent-ink);
+  --secondary: var(--color-signal);
+  --secondary-foreground: var(--color-surface);
+  --border: var(--color-line);
+  --destructive: #e35d4f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,6 +84,16 @@
     --color-signal: #4fd6b4;
 
     --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+
+    --background: var(--color-paper);
+    --foreground: var(--color-ink);
+    --muted-foreground: var(--color-mist);
+    --primary: var(--color-accent);
+    --primary-foreground: var(--color-accent-ink);
+    --secondary: var(--color-signal);
+    --secondary-foreground: var(--color-surface);
+    --border: var(--color-line);
+    --destructive: #e35d4f;
   }
 }
 
@@ -72,6 +108,16 @@
   --color-accent: var(--color-accent);
   --color-accent-ink: var(--color-accent-ink);
   --color-signal: var(--color-signal);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
 
   --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-inter);

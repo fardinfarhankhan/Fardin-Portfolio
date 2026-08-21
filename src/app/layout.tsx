@@ -3,7 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import { SiteNav } from "@/components/chrome/SiteNav";
-import { SiteFooter } from "@/components/chrome/SiteFooter";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { RouteTransition } from "@/components/motion/RouteTransition";
 import { CustomCursor } from "@/components/motion/CustomCursor";
@@ -99,7 +99,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <main id="main" className="flex-1">
               {children}
             </main>
-            <SiteFooter />
+            <CinematicFooter />
           </MotionRoot>
         </ThemeProvider>
       </body>
