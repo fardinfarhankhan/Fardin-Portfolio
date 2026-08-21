@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/data/projects";
 import { Reveal } from "@/components/motion/Reveal";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -33,8 +34,9 @@ export default async function ProjectDetailPage({
 
   return (
     <>
-      <div className="border-b border-[var(--color-line)] bg-[var(--color-hero-bg)] px-5 pb-14 pt-32 sm:px-8 sm:pb-20">
-        <div className="mx-auto max-w-[1000px]">
+      <div className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-hero-bg)] px-5 pb-14 pt-32 sm:px-8 sm:pb-20">
+        <BeamsBackground intensity="medium" />
+        <div className="relative mx-auto max-w-[1000px]">
           <Link
             href="/projects"
             className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-[var(--color-hero-fg)]/55 transition-colors hover:text-[var(--color-accent)]"
