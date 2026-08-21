@@ -29,7 +29,7 @@ function Station({
   const lit = useTransform(progress, [from, threshold], [0, 1]);
 
   return (
-    <li className="relative flex min-w-0 flex-1 flex-col gap-3 border-t border-[var(--color-line)] py-5 pl-6 lg:border-t-0 lg:border-l lg:py-0 lg:pl-5 lg:pr-5">
+    <li className="relative flex min-w-0 flex-1 flex-col gap-3 border-t border-[var(--color-line)] py-5 pl-6 lg:border-t-0 lg:border-l lg:py-0 lg:pl-4 lg:pr-4 xl:pl-5 xl:pr-5">
       <span className="relative font-mono text-xs text-[var(--color-mist)]">
         {String(index + 1).padStart(2, "0")}
         <motion.span
@@ -42,7 +42,7 @@ function Station({
       </span>
       <motion.span
         style={{ opacity }}
-        className="font-display text-base font-medium leading-snug text-[var(--color-ink)] sm:text-lg"
+        className="break-words font-display text-base font-medium leading-snug text-[var(--color-ink)] lg:text-sm xl:text-lg"
       >
         {stage}
       </motion.span>
@@ -78,12 +78,12 @@ export function IntersectionArc() {
   return (
     <section className="border-b border-[var(--color-line)] bg-[var(--color-paper)] py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:gap-16">
+        <div className="flex flex-col gap-14">
           <Reveal>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-accent)]">
               A career built at the intersection
             </p>
-            <p className="mt-4 max-w-md text-lg leading-relaxed text-[var(--color-ink-soft)] sm:text-xl">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-soft)] sm:text-xl">
               The path runs from civil engineering fundamentals toward
               transportation systems, the data and statistical methods used
               to understand them, and the research and professional practice
