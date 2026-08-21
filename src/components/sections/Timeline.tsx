@@ -1,10 +1,13 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useId, useRef, useState, type ReactNode } from "react";
+import { motion, useInView } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
+import { RouteLine } from "@/components/motion/RouteLine";
+import { transition } from "@/lib/motion";
 
 export function Timeline({ children }: { children: ReactNode }) {
-  return <ol className="flex flex-col">{children}</ol>;
+  return <ol className="relative flex flex-col">{children}</ol>;
 }
 
 type TimelineItemProps = {
@@ -26,12 +29,33 @@ export function TimelineItem({
 }: TimelineItemProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const itemRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(itemRef, { once: true, margin: "0px 0px -20% 0px" });
 
   return (
     <Reveal as="li" className="border-b border-[var(--color-line)] first:border-t">
-      <div className="relative flex gap-6 py-8 sm:gap-10">
-        <span className="mt-1 hidden shrink-0 font-mono text-xs text-[var(--color-mist)] sm:block sm:w-10">
-          {String(index).padStart(2, "0")}
+      <div ref={itemRef} className="relative flex gap-6 py-8 sm:gap-10">
+        {/* Route: a short connecting segment above this station, plus the
+            station dot itself — chains into one continuous drawn line as
+            the visitor scrolls down consecutive items. */}
+        <div className="absolute left-5 top-0 bottom-0 hidden w-px sm:block">
+          {index > 1 && (
+            <div className="absolute -top-8 h-8 w-px">
+              <RouteLine orientation="vertical" duration={0.5} />
+            </div>
+          )}
+        </div>
+        <span className="relative mt-1 hidden shrink-0 text-center font-mono text-xs text-[var(--color-mist)] sm:block sm:w-10">
+          <motion.span
+            aria-hidden
+            className="absolute inset-x-0 -top-1 mx-auto h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : undefined}
+            transition={transition.spring}
+          />
+          <span className={inView ? "text-[var(--color-accent)]" : undefined}>
+            {String(index).padStart(2, "0")}
+          </span>
         </span>
 
         <div className="min-w-0 flex-1">

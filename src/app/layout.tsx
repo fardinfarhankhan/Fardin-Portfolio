@@ -4,6 +4,9 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import { SiteNav } from "@/components/chrome/SiteNav";
 import { SiteFooter } from "@/components/chrome/SiteFooter";
+import { MotionRoot } from "@/components/motion/MotionRoot";
+import { RouteTransition } from "@/components/motion/RouteTransition";
+import { CustomCursor } from "@/components/motion/CustomCursor";
 import { PROFILE } from "@/data/profile";
 import "./globals.css";
 
@@ -86,14 +89,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <ThemeScript />
         <ThemeProvider>
-          <a href="#main" className="skip-link">
-            Skip to content
-          </a>
-          <SiteNav />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          <MotionRoot>
+            <a href="#main" className="skip-link">
+              Skip to content
+            </a>
+            <RouteTransition />
+            <CustomCursor />
+            <SiteNav />
+            <main id="main" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </MotionRoot>
         </ThemeProvider>
       </body>
     </html>

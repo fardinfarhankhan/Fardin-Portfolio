@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { NAV_ROUTES, SITE_NAME } from "@/lib/routes";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { PROFILE } from "@/data/profile";
@@ -57,7 +58,11 @@ export function SiteNav() {
               >
                 {route.label}
                 {active && (
-                  <span className="absolute inset-x-3 -bottom-px h-px bg-[var(--color-accent)]" />
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute inset-x-3 -bottom-px h-px bg-[var(--color-accent)]"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
                 )}
               </Link>
             );
@@ -110,12 +115,25 @@ export function SiteNav() {
         }`}
       >
         <nav aria-label="Mobile" className="min-h-0 overflow-hidden">
-          <ul className="flex flex-col px-5 py-2">
+          <motion.ul
+            className="flex flex-col px-5 py-2"
+            initial={false}
+            animate={open ? "visible" : "hidden"}
+            variants={{ visible: { transition: { staggerChildren: 0.045 } } }}
+          >
             {NAV_ROUTES.map((route) => {
               const active =
                 pathname === route.href || pathname.startsWith(`${route.href}/`);
               return (
-                <li key={route.href} className="border-b border-[var(--color-line)]/60">
+                <motion.li
+                  key={route.href}
+                  className="border-b border-[var(--color-line)]/60"
+                  variants={{
+                    hidden: { opacity: 0, y: -8 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.25 }}
+                >
                   <Link
                     href={route.href}
                     aria-current={active ? "page" : undefined}
@@ -125,10 +143,17 @@ export function SiteNav() {
                   >
                     {route.label}
                   </Link>
-                </li>
+                </motion.li>
               );
             })}
-            <li className="pt-3">
+            <motion.li
+              className="pt-3"
+              variants={{
+                hidden: { opacity: 0, y: -8 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.25 }}
+            >
               <a
                 href={PROFILE.cvUrl}
                 target="_blank"
@@ -137,8 +162,8 @@ export function SiteNav() {
               >
                 Download CV ↗
               </a>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </nav>
       </div>
     </header>

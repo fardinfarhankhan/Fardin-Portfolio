@@ -13,7 +13,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       />
 
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <span className="font-mono text-xs text-[var(--color-mist)]">
+        <span className="font-mono text-xs text-[var(--color-mist)] transition-colors duration-300 group-hover:text-[var(--color-accent)]">
           {String(index).padStart(2, "0")}
         </span>
         <div className="flex flex-wrap gap-1.5">
@@ -28,7 +28,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         </div>
       </div>
 
-      <h3 className="mt-4 max-w-2xl font-display text-xl font-semibold leading-snug text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] sm:text-2xl">
+      <h3 className="mt-4 max-w-2xl font-display text-xl font-semibold leading-snug text-[var(--color-ink)] transition-[color,transform] duration-300 group-hover:translate-x-1.5 group-hover:text-[var(--color-accent)] sm:text-2xl">
         {project.title}
       </h3>
 

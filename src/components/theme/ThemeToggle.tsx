@@ -1,14 +1,39 @@
 "use client";
 
+import { useRef } from "react";
 import { useTheme } from "./ThemeProvider";
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (callback: () => void) => { finished: Promise<void> };
+};
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleClick = () => {
+    const el = buttonRef.current;
+    const doc = document as ViewTransitionDocument;
+
+    if (!el || !doc.startViewTransition) {
+      toggleTheme();
+      return;
+    }
+
+    const rect = el.getBoundingClientRect();
+    document.documentElement.style.setProperty("--theme-toggle-x", `${rect.left + rect.width / 2}px`);
+    document.documentElement.style.setProperty("--theme-toggle-y", `${rect.top + rect.height / 2}px`);
+
+    doc.startViewTransition(() => {
+      toggleTheme();
+    });
+  };
 
   return (
     <button
+      ref={buttonRef}
       type="button"
-      onClick={toggleTheme}
+      onClick={handleClick}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       className="group relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)]"
     >

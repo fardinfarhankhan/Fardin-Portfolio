@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { RESEARCH_INTERESTS, PUBLICATIONS, THESES, type ResearchTopic } from "@/data/research";
 
 type RelatedWork = { label: string; kind: "Publication" | "Thesis" };
@@ -18,15 +18,29 @@ function relatedWorkFor(topic: ResearchTopic | null): RelatedWork[] {
   return [...theses, ...pubs];
 }
 
+/** Two topics are "connected" if they co-occur on the same publication or thesis. */
+function connectedTopicsFor(topic: ResearchTopic): Set<ResearchTopic> {
+  const set = new Set<ResearchTopic>();
+  for (const item of [...PUBLICATIONS, ...THESES]) {
+    if (item.topics.includes(topic)) {
+      for (const t of item.topics) if (t !== topic) set.add(t);
+    }
+  }
+  return set;
+}
+
 export function ResearchMap() {
   const [active, setActive] = useState<ResearchTopic | null>(null);
   const related = relatedWorkFor(active);
+  const connected = useMemo(() => (active ? connectedTopicsFor(active) : new Set<ResearchTopic>()), [active]);
 
   return (
     <div>
       <div className="flex flex-wrap gap-2.5" onMouseLeave={() => setActive(null)}>
         {RESEARCH_INTERESTS.map((topic) => {
           const isActive = active === topic;
+          const isConnected = connected.has(topic);
+          const isDimmed = active !== null && !isActive && !isConnected;
           return (
             <button
               key={topic}
@@ -36,10 +50,13 @@ export function ResearchMap() {
               onBlur={() => setActive(null)}
               onClick={() => setActive(isActive ? null : topic)}
               aria-pressed={isActive}
-              className={`rounded-full border px-4 py-2 text-left text-sm font-medium transition-colors ${
+              style={{ opacity: isDimmed ? 0.4 : 1 }}
+              className={`rounded-full border px-4 py-2 text-left text-sm font-medium transition-all duration-300 ${
                 isActive
-                  ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-accent-ink)]"
-                  : "border-[var(--color-line)] text-[var(--color-ink-soft)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  ? "scale-[1.04] border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-accent-ink)]"
+                  : isConnected
+                    ? "border-[var(--color-accent)] text-[var(--color-ink)]"
+                    : "border-[var(--color-line)] text-[var(--color-ink-soft)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
               }`}
             >
               {topic}

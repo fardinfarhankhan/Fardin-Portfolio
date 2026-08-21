@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/sections/PageHeader";
+import { ContactHero } from "@/components/sections/ContactHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { PROFILE } from "@/data/profile";
 
@@ -62,7 +62,7 @@ function ContactRow({
 export default function ContactPage() {
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Let's work on something meaningful." />
+      <ContactHero title="Let's work on something meaningful." />
 
       <div className="mx-auto max-w-[900px] px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>

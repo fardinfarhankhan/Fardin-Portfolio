@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Timeline, TimelineItem } from "@/components/sections/Timeline";
+import { Reveal } from "@/components/motion/Reveal";
+import { CountUp } from "@/components/motion/CountUp";
 import { EXPERIENCE } from "@/data/experience";
+
+const STATS = [
+  { value: 50, suffix: "+", label: "EOIs led" },
+  { value: 30, suffix: "+", label: "RFPs led" },
+  { value: 38, prefix: "~$", suffix: "M", label: "Secured in consultancy assignments" },
+];
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -17,6 +25,28 @@ export default function ExperiencePage() {
         title="Professional timeline"
         description="Business development and engineering consulting, alongside a parallel track in media, campaigns, and event production."
       />
+
+      <div className="mx-auto max-w-[1100px] px-5 pt-16 sm:px-8 sm:pt-24">
+        <Reveal className="grid grid-cols-2 gap-8 border-b border-[var(--color-line)] pb-14 sm:grid-cols-3">
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <CountUp
+                value={stat.value}
+                prefix={stat.prefix}
+                suffix={stat.suffix}
+                className="font-display text-4xl font-semibold text-[var(--color-ink)] sm:text-5xl"
+              />
+              <p className="mt-2 text-sm text-[var(--color-mist)]">{stat.label}</p>
+            </div>
+          ))}
+          <div>
+            <p className="font-display text-4xl font-semibold text-[var(--color-ink)] sm:text-5xl">
+              $1–120M
+            </p>
+            <p className="mt-2 text-sm text-[var(--color-mist)]">Project value range</p>
+          </div>
+        </Reveal>
+      </div>
 
       <div className="mx-auto max-w-[1100px] px-5 py-16 sm:px-8 sm:py-24">
         <Timeline>
