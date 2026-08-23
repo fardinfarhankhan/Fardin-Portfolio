@@ -15,7 +15,7 @@ function GroupSection({ group, projects, startIndex }: { group: ProjectGroup; pr
           {projects.length} project{projects.length === 1 ? "" : "s"}
         </span>
       </div>
-      <div className="grid sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         {projects.map((project, i) => (
           <ProjectCard key={project.slug} project={project} index={startIndex + i + 1} />
         ))}
@@ -104,7 +104,7 @@ export function ProjectGrid({
                 <GroupSection key={group} group={group} projects={items} startIndex={startIndex} />
               ))
             : (
-                <div className="grid sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3">
+                <div className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
                   {filtered.map((project, i) => (
                     <ProjectCard key={project.slug} project={project} index={i + 1} />
                   ))}

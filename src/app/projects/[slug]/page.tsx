@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/data/projects";
@@ -97,6 +98,39 @@ export default async function ProjectDetailPage({
       </div>
 
       <div className="mx-auto max-w-[1000px] px-5 py-16 sm:px-8 sm:py-20">
+        {project.images && project.images.length > 0 && (
+          <Reveal className="mb-12 sm:mb-16">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface-2)] sm:aspect-[21/9]">
+              <Image
+                src={project.images[0]}
+                alt={project.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 1000px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            {project.images.length > 1 && (
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {project.images.slice(1).map((src) => (
+                  <div
+                    key={src}
+                    className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)]"
+                  >
+                    <Image
+                      src={src}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 50vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </Reveal>
+        )}
+
         <Reveal>
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
             Overview

@@ -32,6 +32,8 @@ export type ProjectGroup =
 
 export type Project = {
   slug: string;
+  /** Project photos/artwork, in display order. First entry is used as the card/hero cover. */
+  images?: string[];
   title: string;
   year?: string;
   org?: string;
@@ -65,6 +67,7 @@ export const PROJECTS: Project[] = [
   // ── Transportation & Infrastructure ──────────────────────────────
   {
     slug: "dhaka-chittagong-freight-corridor-feasibility",
+    images: ["/images/projects/dhaka-chittagong-freight-corridor-feasibility/01.jpg"],
     title: "Dhaka–Chattogram Freight Corridor Feasibility Study",
     value: "US$2.5M",
     tags: ["Transportation Infrastructure", "Freight & Logistics", "Feasibility Study"],
@@ -84,6 +87,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "first-dhaka-elevated-expressway-independent-engineer",
+    images: ["/images/projects/first-dhaka-elevated-expressway-independent-engineer/01.jpg"],
     title: "First Dhaka Elevated Expressway – Independent Engineer",
     value: "US$2M",
     tags: ["Urban Transport", "Expressway Infrastructure", "Independent Engineering"],
@@ -103,6 +107,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "joydebpur-ishurdi-dual-gauge-detailed-design",
+    images: ["/images/projects/joydebpur-ishurdi-dual-gauge-detailed-design/01.jpg"],
     title: "Joydebpur–Ishurdi Dual Gauge Railway Project",
     value: "US$6M",
     tags: ["Railway Infrastructure", "Detailed Design", "Multimodal Connectivity"],
@@ -122,6 +127,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "sasec-trade-facilitation-nbr",
+    images: ["/images/projects/sasec-trade-facilitation-nbr/01.jpg"],
     title: "SASEC Integrated Trade Facilitation Sector Development Project – NBR Component",
     value: "US$3M",
     tags: ["Trade Facilitation", "Transport Systems", "Institutional Development"],
@@ -140,6 +146,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "river-resilient-infrastructure-adaptation",
+    images: ["/images/projects/river-resilient-infrastructure-adaptation/01.jpg"],
     title: "Resilient Infrastructure for Adaptation and Vulnerability Reduction (RIVER)",
     value: "US$20M",
     tags: ["Climate Resilience", "Infrastructure", "Development Finance"],
@@ -159,6 +166,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "sylhet-chhatak-bazar-rail-rehabilitation-2022",
+    images: ["/images/projects/sylhet-chhatak-bazar-rail-rehabilitation-2022/01.jpg"],
     title: "2022 Flood-Affected Sylhet–Chhatak Bazar Rail Rehabilitation",
     year: "2022",
     value: "US$1M",
@@ -176,10 +184,50 @@ export const PROJECTS: Project[] = [
     ],
     group: "Transportation & Infrastructure",
   },
+  {
+    slug: "chittagong-dohazari-rail-project",
+    images: ["/images/projects/chittagong-dohazari-rail-project/01.jpg"],
+    title: "Chittagong–Dohazari Rail Project",
+    value: "US$20M",
+    tags: ["Railway Infrastructure", "Technical Proposal", "Project Planning"],
+    summary:
+      "Led the development of the technical approach, methodology, and project workplan for the Chittagong–Dohazari Rail Project, informed by site inspections, contributing to the successful securing of a US$20 million project.",
+    description:
+      "Led the development of the technical approach, methodology, and project workplan for the Chittagong–Dohazari Rail Project, informed by site inspections, contributing to the successful securing of a US$20 million project.",
+    contribution: [
+      "Technical approach",
+      "Methodology development",
+      "Site inspection",
+      "Work planning",
+      "Proposal development",
+    ],
+    group: "Transportation & Infrastructure",
+    featured: true,
+  },
+  {
+    slug: "kamalapur-airport-station-multimodal-hub",
+    images: ["/images/projects/kamalapur-airport-station-multimodal-hub/01.png"],
+    title: "Kamalapur–Airport Station Multimodal Hub",
+    value: "US$5M",
+    tags: ["Multimodal Transit", "Technical Proposal", "Stakeholder Engagement"],
+    summary:
+      "Led the development of the technical approach, methodology, and project workplan for the Kamalapur–Airport Station Multimodal Hub, supported by site assessments and stakeholder inputs, contributing to the successful securing of a US$5 million project.",
+    description:
+      "Led the development of the technical approach, methodology, and project workplan for the Kamalapur–Airport Station Multimodal Hub, supported by site assessments and stakeholder inputs, contributing to the successful securing of a US$5 million project.",
+    contribution: [
+      "Technical approach",
+      "Methodology development",
+      "Site assessment",
+      "Stakeholder coordination",
+      "Work planning",
+    ],
+    group: "Transportation & Infrastructure",
+  },
 
   // ── International Development & Multilateral Engagements ────────
   {
     slug: "unodc-glo-act-2023",
+    images: ["/images/projects/unodc-glo-act-2023/01.jpg"],
     title: "UNODC GLO.ACT 2023",
     year: "2023",
     org: "United Nations Office on Drugs and Crime",
@@ -199,6 +247,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "unodc-glo-act-2022",
+    images: ["/images/projects/unodc-glo-act-2022/01.png"],
     title: "UNODC GLO.ACT 2022",
     year: "2022",
     org: "United Nations Office on Drugs and Crime",
@@ -218,6 +267,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "world-press-freedom-day-2024",
+    images: ["/images/projects/world-press-freedom-day-2024/01.jpg"],
     title: "World Press Freedom Day 2024",
     year: "2024",
     tags: ["International Event", "Multilingual Communications", "Service Coordination"],
@@ -235,6 +285,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "commonwealth-delegation-transport-support",
+    images: ["/images/projects/commonwealth-delegation-transport-support/01.jpg"],
     title: "Commonwealth Secretariat – Delegation Support",
     org: "The Commonwealth Secretariat",
     tags: ["International Relations", "Logistics", "Stakeholder Coordination"],
@@ -252,6 +303,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "cdd-documentary-photo-booklet",
+    images: ["/images/projects/cdd-documentary-photo-booklet/01.png"],
     title: "Centre for Disability in Development",
     org: "Centre for Disability in Development (CDD)",
     tags: ["Development Communications", "Documentary Production", "Visual Storytelling"],
@@ -266,6 +318,7 @@ export const PROJECTS: Project[] = [
   // ── Digital & Strategic Communications ───────────────────────────
   {
     slug: "bicsaa-website-2023",
+    images: ["/images/projects/bicsaa-website-2023/01.png"],
     title: "Bangabandhu International Cyber Security Awareness Award (BICSAA)",
     year: "2023",
     tags: ["Digital Platform", "Public Awareness", "Technology Communications"],
@@ -278,6 +331,10 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "bicsaa-launch-award-ceremonies",
+    images: [
+      "/images/projects/bicsaa-launch-award-ceremonies/01.jpg",
+      "/images/projects/bicsaa-launch-award-ceremonies/02.png",
+    ],
     title: "BICSAA Launch & Award Ceremonies",
     year: "2023",
     tags: ["Strategic Communications", "Event Production", "Digital Awareness"],
@@ -289,6 +346,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "undp-civic-responsibilities-video-series",
+    images: ["/images/projects/undp-civic-responsibilities-video-series/01.png"],
     title: "UNDP – Civic Responsibility Digital Campaign",
     org: "United Nations Development Programme",
     tags: ["Digital Communications", "Public Engagement", "Social Media"],
@@ -301,6 +359,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "riding-for-change-womens-safety",
+    images: ["/images/projects/riding-for-change-womens-safety/01.jpg"],
     title: "Riding for Change – Women's Safety in Public Places",
     tags: ["Social Impact", "Public Awareness", "Campaign Production"],
     summary:
@@ -313,6 +372,7 @@ export const PROJECTS: Project[] = [
   // ── Brand & Marketing Experience ─────────────────────────────────
   {
     slug: "hocche-ta-ki-pathao-car",
+    images: ["/images/projects/hocche-ta-ki-pathao-car/01.png"],
     title: "Pathao – \"Hocche Ta Ki\" Campaign",
     org: "Pathao",
     tags: ["Digital Marketing", "Meme Strategy", "Brand Engagement"],
@@ -325,6 +385,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "pathao-promotional-campaign",
+    images: ["/images/projects/pathao-promotional-campaign/01.png"],
     title: "Pathao – Promotional Campaign",
     year: "2018–2019",
     org: "Pathao",
@@ -337,6 +398,10 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "bkash-eid-salami-campaign",
+    images: [
+      "/images/projects/bkash-eid-salami-campaign/01.jpg",
+      "/images/projects/bkash-eid-salami-campaign/02.jpg",
+    ],
     title: "bKash – Eid-ul-Fitr Salami Campaign",
     year: "2021–2022",
     org: "bKash",
@@ -349,6 +414,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "studio-x-impress-tanjin-tisha",
+    images: ["/images/projects/studio-x-impress-tanjin-tisha/01.png"],
     title: "Marico – \"Impress Tanjin Tisha with American Style\"",
     org: "Marico",
     tags: ["Brand Activation", "Entertainment Marketing", "Campaign Development"],
@@ -362,6 +428,7 @@ export const PROJECTS: Project[] = [
   // ── Event & Production Management ────────────────────────────────
   {
     slug: "digital-khichuri-challenge-2023-rajshahi",
+    images: ["/images/projects/digital-khichuri-challenge-2023-rajshahi/01.jpg"],
     title: "Digital Khichuri Challenge 2023 – Rajshahi Cohort",
     year: "2023",
     org: "United Nations Development Programme",
@@ -374,6 +441,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "digital-khichuri-challenge-2022-national-gala",
+    images: ["/images/projects/digital-khichuri-challenge-2022-national-gala/01.jpg"],
     title: "Digital Khichuri Challenge – National Gala 2022",
     year: "2022",
     tags: ["Event Management", "Production", "Stakeholder Coordination"],
@@ -385,6 +453,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "dp-bangladesh-decathlon",
+    images: ["/images/projects/dp-bangladesh-decathlon/01.jpg"],
     title: "Decathlon Bangladesh – Annual Retreat",
     org: "Decathlon",
     tags: ["Corporate Event Management", "Vendor Coordination", "Negotiation"],
@@ -396,6 +465,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "iutaa-acoustic-night-2023",
+    images: ["/images/projects/iutaa-acoustic-night-2023/01.jpg"],
     title: "IUTAA Acoustic Night 2023",
     year: "2023",
     org: "Syndic Atelier Ltd.",
@@ -406,10 +476,28 @@ export const PROJECTS: Project[] = [
       "Supported the planning and execution of the IUTAA Acoustic Night 2023, coordinating production requirements, logistics, scheduling, vendors, and on-ground operations. Managed multiple operational components to deliver the event within the planned programme framework.",
     group: "Event & Production Management",
   },
+  {
+    slug: "mun-alert-bangladesh-launch-event",
+    images: ["/images/projects/mun-alert-bangladesh-launch-event/01.jpg"],
+    title: "MUN Alert Bangladesh — Launch Event & Stakeholder Coordination",
+    org: "MUN Alert Bangladesh",
+    tags: ["Event Management", "Stakeholder Coordination", "Public Safety Initiative"],
+    summary:
+      "Led event execution, management, budgeting, and stakeholder coordination for the launch of MUN Alert in Bangladesh, a national initiative focused on child safety, missing children, and digital responsibility.",
+    description:
+      "Led event execution, management, budgeting, and stakeholder coordination for the launch of MUN Alert in Bangladesh, supporting a national initiative focused on child safety, missing children, and digital responsibility. Coordinated event logistics and engagement with key stakeholders including Government, Law Enforcement, and Meta, contributing to the successful delivery of the launch.",
+    contribution: ["Event execution", "Event management", "Budgeting", "Stakeholder coordination", "Logistics"],
+    group: "Event & Production Management",
+    featured: true,
+  },
 
   // ── Media & Content Production ───────────────────────────────────
   {
     slug: "rantages-show-seasons-1-2",
+    images: [
+      "/images/projects/rantages-show-seasons-1-2/01.jpg",
+      "/images/projects/rantages-show-seasons-1-2/02.png",
+    ],
     title: "The Rantages Show – Seasons 1 & 2",
     year: "2020–2021",
     tags: ["Digital Media", "Programme Production", "Content Strategy"],
@@ -421,6 +509,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "skitto-class-party",
+    images: ["/images/projects/skitto-class-party/01.png"],
     title: "Skitto Presents \"Class Party\"",
     year: "2020",
     org: "Skitto",
@@ -433,6 +522,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "harpic-19against19",
+    images: ["/images/projects/harpic-19against19/01.png"],
     title: "Harpic Presents \"19against19\"",
     org: "Reckitt Benckiser",
     tags: ["Brand Content", "Campaign Ideation", "Digital Production"],
@@ -444,6 +534,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "oblique-music-launch",
+    images: ["/images/projects/oblique-music-launch/01.jpg"],
     title: "Oblique – \"Asshashon\"",
     org: "Oblique",
     tags: ["Music Marketing", "Digital Content", "Promotion"],
@@ -457,6 +548,7 @@ export const PROJECTS: Project[] = [
   // ── Technical Training & Professional Events ─────────────────────
   {
     slug: "pgcb-transmission-tower-training",
+    images: ["/images/projects/pgcb-transmission-tower-training/01.jpg"],
     title: "PGCB – Transmission Line Tower & Foundation Design Training",
     org: "Power Grid Company of Bangladesh (PGCB)",
     tags: ["Technical Training", "Capacity Development", "Engineering"],
@@ -468,6 +560,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "iut-cbs-career-expo-2021",
+    images: ["/images/projects/iut-cbs-career-expo-2021/01.jpg"],
     title: "IUT CBS – Career Expo 2021",
     year: "2021",
     tags: ["Event Management", "Technical Coordination", "Programme Planning"],
@@ -479,6 +572,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "iut-cbs-intern-2021",
+    images: ["/images/projects/iut-cbs-intern-2021/01.png"],
     title: "IUT CBS – INTERN 2021",
     year: "2021",
     tags: ["Business Competition", "Campaign Execution", "Youth Engagement"],
@@ -492,6 +586,7 @@ export const PROJECTS: Project[] = [
   // ── Other work ────────────────────────────────────────────────────
   {
     slug: "dont-buy-mortein-campaign",
+    images: ["/images/projects/dont-buy-mortein-campaign/01.jpg"],
     title: "'Don't Buy Mortein' Campaign",
     org: "Rantages / Tanvir Sultan MBA",
     summary: "Meme marketing and content creation.",
@@ -500,6 +595,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "ilo-interpreting-services",
+    images: ["/images/projects/ilo-interpreting-services/01.jpg"],
     title: "Simultaneous Interpreting Services for International Trade Union Corporation",
     org: "ILO in Bangladesh",
     summary: "Simultaneous interpreting services for ILO in Bangladesh.",
@@ -508,6 +604,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "lets-talk-with-sheikh-hasina-cri",
+    images: ["/images/projects/lets-talk-with-sheikh-hasina-cri/01.jpg"],
     title: "'Let's Talk with Sheikh Hasina', organized by CRI",
     summary: "Production support for the CRI-organized session.",
     sector: ["Events", "Media"],
@@ -515,6 +612,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "commonwealth-anti-corruption-cartoon-photo-doc",
+    images: ["/images/projects/commonwealth-anti-corruption-cartoon-photo-doc/01.jpg"],
     title: "Photography and Video Documentation — 'Anti-Corruption Cartoon Competition 2023' & 'Investigative Journalism 2023'",
     year: "2023",
     org: "The Commonwealth Secretariat",
@@ -524,6 +622,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "lcoy-bangladesh-2023",
+    images: ["/images/projects/lcoy-bangladesh-2023/01.jpg"],
     title: "LCOY Bangladesh 2023",
     year: "2023",
     org: "Global Alliance for Improved Nutrition (GAIN)",
@@ -533,6 +632,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "lets-talk-young-bangla-cri",
+    images: ["/images/projects/lets-talk-young-bangla-cri/01.png"],
     title: "'Let's Talk', by Young Bangla and CRI",
     summary: "Documentation and production of Let's Talk sessions at DU and SAU.",
     sector: ["Media", "Events"],
@@ -540,6 +640,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "red-king-cooling-oil-campaign",
+    images: ["/images/projects/red-king-cooling-oil-campaign/01.jpg"],
     title: "Red King Men's Cooling Oil Promotional Social Media Campaign",
     summary: "Documentation and production of the road show.",
     sector: ["Campaigns", "Media"],
@@ -547,6 +648,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "rock-and-rhythm-2022",
+    images: ["/images/projects/rock-and-rhythm-2022/01.png"],
     title: "Rock and Rhythm 2022",
     year: "2022",
     org: "IMPULSE FC, Islamic University of Technology",
@@ -557,6 +659,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "undp-peace-talk-cafe-2022",
+    images: ["/images/projects/undp-peace-talk-cafe-2022/01.jpg"],
     title: "UNDP Peace Talk Cafe 2022",
     year: "2022",
     org: "United Nations Development Programme",
@@ -566,6 +669,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "digital-khichuri-challenge-auw-cohort",
+    images: ["/images/projects/digital-khichuri-challenge-auw-cohort/01.jpg"],
     title: "Digital Khichuri Challenge — AUW Cohort",
     year: "2022",
     summary: "Campus activation for DKC 2022, AUW Cohort.",
@@ -574,6 +678,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "dominos-pizza-meme-competition",
+    images: ["/images/projects/dominos-pizza-meme-competition/01.jpg"],
     title: "Meme Competition for Domino's Pizza",
     org: "Domino's Pizza",
     summary: "Meme competition on Rantages Page and Rantages Goatposting for Friendship Day.",
@@ -582,6 +687,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "sip-for-change-undp",
+    images: ["/images/projects/sip-for-change-undp/01.jpg"],
     title: "'Sip for Change' Campaign",
     org: "United Nations Development Programme",
     summary: "Planning and execution of 16 Days of Activism against Gender-Based Violence.",
@@ -590,6 +696,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "just-another-gig-act-01",
+    images: ["/images/projects/just-another-gig-act-01/01.jpg"],
     title: "Just Another Gig — Act 01",
     org: "Syndic Atelier Ltd.",
     summary: "Organized, planned, and executed an indoor plugged concert.",
