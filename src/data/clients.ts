@@ -36,7 +36,10 @@ export const CLIENTS: Client[] = [
     logo: "/logos/clients/united-nations-office-on-drugs-and-crime.png",
   },
   { name: "Young Bangla", logo: "/logos/clients/young-bangla.png" },
-  { name: "Global Alliance for Improved Nutrition", logo: null },
+  {
+    name: "Global Alliance for Improved Nutrition",
+    logo: "/logos/clients/global-alliance-for-improved-nutrition.png",
+  },
   { name: "Marico", logo: "/logos/clients/marico.jpg" },
   { name: "Power Grid Company of Bangladesh", logo: "/logos/clients/power-grid-company-of-bangladesh.png" },
   { name: "Grameenphone", logo: "/logos/clients/grameenphone.png" },
