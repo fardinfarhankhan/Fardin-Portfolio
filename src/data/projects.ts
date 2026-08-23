@@ -598,42 +598,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/** Organizations and clients Fardin has worked with, as listed on the original site. */
-export const BRAND_AFFILIATIONS: string[] = [
-  "Bangladesh Railway",
-  "Bangladesh Bridge Authority",
-  "National Board of Revenue",
-  "Roads and Highways Department",
-  "Local Government Engineering Department",
-  "The Commonwealth",
-  "Reckitt Benckiser",
-  "Transparency International Bangladesh",
-  "ICT Division Bangladesh",
-  "International Labour Organization",
-  "Centre for Research Initiatives",
-  "Centre for Disability in Development",
-  "United Nations Development Programme",
-  "United Nations Office on Drugs and Crime",
-  "Young Bangla",
-  "Global Alliance for Improved Nutrition",
-  "Marico",
-  "Power Grid Company of Bangladesh",
-  "Grameenphone",
-  "Decathlon",
-  "Pathao",
-  "Islamic University of Technology",
-  "Domino's Pizza",
-  "bKash",
-  "Meghna Group of Industries",
-  "Skitto",
-  "Impulse FC",
-  "IUT Alumni Association",
-  "IUT Career and Business Society",
-  "Adventor Communications",
-  "Oblique",
-  "Standard Chartered Bank",
-];
-
 export const PROJECT_CATEGORIES: ProjectCategory[] = [
   "Transportation",
   "Engineering",

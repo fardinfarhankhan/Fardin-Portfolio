@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ProjectGrid } from "@/components/sections/ProjectGrid";
+import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Reveal } from "@/components/motion/Reveal";
-import { PROJECTS, PROJECT_GROUPS, BRAND_AFFILIATIONS } from "@/data/projects";
+import { PROJECTS, PROJECT_GROUPS } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -29,13 +30,11 @@ export default function ProjectsPage() {
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
               Organizations & clients
             </p>
-            <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-              {BRAND_AFFILIATIONS.map((org) => (
-                <li key={org} className="text-sm text-[var(--color-ink-soft)]">
-                  {org}
-                </li>
-              ))}
-            </ul>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-ink-soft)]">
+              Organizations and institutions I&rsquo;ve worked with across transportation, infrastructure,
+              development, research and business.
+            </p>
+            <ClientLogos />
           </Reveal>
         </div>
       </div>
