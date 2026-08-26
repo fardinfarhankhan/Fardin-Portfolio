@@ -29,6 +29,8 @@ export default function EducationPage() {
               title={entry.degree}
               subtitle={[entry.institution, entry.department].filter(Boolean).join(" — ")}
               meta={entry.period ?? entry.result}
+              image={entry.image}
+              link={entry.link}
             >
               <div className="max-w-3xl space-y-3 pb-2">
                 {entry.period && entry.result && (

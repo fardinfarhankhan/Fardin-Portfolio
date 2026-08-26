@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
 import { motion, useInView } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
 import { RouteLine } from "@/components/motion/RouteLine";
@@ -16,6 +17,10 @@ type TimelineItemProps = {
   title: string;
   subtitle?: string;
   meta?: string;
+  /** Optional photo shown as a thumbnail next to the entry. */
+  image?: string;
+  /** Optional external link — e.g. an institution's official website. Makes `subtitle` clickable. */
+  link?: string;
   children: ReactNode;
 };
 
@@ -25,6 +30,8 @@ export function TimelineItem({
   title,
   subtitle,
   meta,
+  image,
+  link,
   children,
 }: TimelineItemProps) {
   const [open, setOpen] = useState(false);
@@ -59,45 +66,80 @@ export function TimelineItem({
         </span>
 
         <div className="min-w-0 flex-1">
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls={panelId}
-            className="group flex w-full flex-col items-start gap-1 text-left"
-          >
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.12em] text-[var(--color-accent)]">
-              {eyebrow}
-            </span>
-            <span className="flex w-full flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <span className="font-display text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
-                {title}
-              </span>
-              {meta && (
-                <span className="font-mono text-xs text-[var(--color-mist)]">{meta}</span>
-              )}
-            </span>
-            {subtitle && (
-              <span className="text-sm text-[var(--color-ink-soft)]">{subtitle}</span>
+          <div className="flex items-start gap-4 sm:gap-5">
+            {image && (
+              <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] sm:h-20 sm:w-28">
+                <Image src={image} alt={`${title} campus`} fill sizes="(min-width: 640px) 112px, 80px" className="object-cover" />
+              </div>
             )}
-            <span className="mt-2 inline-flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-[var(--color-mist)] transition-colors group-hover:text-[var(--color-accent)]">
-              {open ? "Hide detail" : "Show detail"}
-              <svg
-                aria-hidden
-                viewBox="0 0 12 12"
-                className={`h-2.5 w-2.5 transition-transform ${open ? "rotate-180" : ""}`}
+            <div className="min-w-0 flex-1">
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+                aria-controls={panelId}
+                className="group flex w-full flex-col items-start gap-1 text-left"
               >
-                <path
-                  d="M2.5 4.5 6 8l3.5-3.5"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </button>
+                <span className="font-mono text-[0.7rem] uppercase tracking-[0.12em] text-[var(--color-accent)]">
+                  {eyebrow}
+                </span>
+                <span className="flex w-full flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <span className="font-display text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
+                    {title}
+                  </span>
+                  {meta && (
+                    <span className="font-mono text-xs text-[var(--color-mist)]">{meta}</span>
+                  )}
+                </span>
+              </button>
+              {subtitle &&
+                (link ? (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center gap-1 text-sm text-[var(--color-ink-soft)] transition-colors hover:text-[var(--color-accent)]"
+                  >
+                    {subtitle}
+                    <svg aria-hidden viewBox="0 0 12 12" className="h-2.5 w-2.5">
+                      <path
+                        d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8"
+                        stroke="currentColor"
+                        strokeWidth="1.3"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                ) : (
+                  <span className="text-sm text-[var(--color-ink-soft)]">{subtitle}</span>
+                ))}
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+                aria-controls={panelId}
+                className="group mt-2 inline-flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-[var(--color-mist)] transition-colors hover:text-[var(--color-accent)]"
+              >
+                {open ? "Hide detail" : "Show detail"}
+                <svg
+                  aria-hidden
+                  viewBox="0 0 12 12"
+                  className={`h-2.5 w-2.5 transition-transform ${open ? "rotate-180" : ""}`}
+                >
+                  <path
+                    d="M2.5 4.5 6 8l3.5-3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
 
           <div
             id={panelId}

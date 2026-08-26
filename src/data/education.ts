@@ -10,6 +10,10 @@ export type EducationEntry = {
     supervisor: string;
   };
   detail?: string;
+  /** Campus photo, shown as a thumbnail on the education timeline. */
+  image?: string;
+  /** Institution's official website. */
+  link?: string;
 };
 
 /**
@@ -25,6 +29,8 @@ export const EDUCATION: EducationEntry[] = [
     institution: "Bangladesh University of Engineering and Technology (BUET)",
     department: "Accident Research Institute (ARI)",
     period: "May 2026 – Present",
+    image: "/images/education/buet.jpg",
+    link: "https://www.buet.ac.bd/web/",
   },
   {
     degree: "Master of Science (M.Sc.)",
@@ -38,6 +44,8 @@ export const EDUCATION: EducationEntry[] = [
         "From Road to Rail: Behavioural Determinants of Mode Shift and Corridor Prioritization for Sustainable Rail Development",
       supervisor: "Professor Md. Asraful Alam, Department of Statistics and Data Science",
     },
+    image: "/images/education/jahangirnagar-university.jpg",
+    link: "https://juniv.edu/",
   },
   {
     degree: "Bachelor of Science (B.Sc.)",
@@ -50,16 +58,22 @@ export const EDUCATION: EducationEntry[] = [
       title: "Investigating Trip Generation Behaviour During Medical Emergencies in Bangladesh",
       supervisor: "Dr. Moinul Hossain, Professor, Islamic University of Technology",
     },
+    image: "/images/education/iut.jpg",
+    link: "https://www.iutoic-dhaka.edu/",
   },
   {
     degree: "Higher Secondary Certificate Examination",
     institution: "Notre Dame College",
     result: "GPA 5.00 / 5.00",
+    image: "/images/education/notre-dame-college.jpg",
+    link: "https://ndc.edu.bd/",
   },
   {
     degree: "Secondary School Certificate Examination",
     institution: "St. Joseph Higher Secondary School",
     result: "GPA 5.00 / 5.00",
+    image: "/images/education/st-joseph.jpg",
+    link: "https://www.sjs.edu.bd/",
   },
 ];
 
