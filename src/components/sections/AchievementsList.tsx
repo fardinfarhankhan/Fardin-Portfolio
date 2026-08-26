@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "motion/react";
 import { Reveal } from "@/components/motion/Reveal";
 import { ACHIEVEMENTS, COURSE_CERTIFICATIONS, type AchievementCategory } from "@/data/achievements";
-import { PROFILE } from "@/data/profile";
+import { PROFILE, type Membership } from "@/data/profile";
 import { transition } from "@/lib/motion";
 
 const CATEGORY_LABELS: Record<AchievementCategory, string> = {
@@ -60,6 +61,31 @@ function AchievementNode({
   );
 }
 
+function MembershipCard({ m }: { m: Membership }) {
+  return (
+    <div className="flex items-center gap-3">
+      {m.logo && (
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[var(--color-line)] bg-white p-1.5">
+          <Image
+            src={m.logo}
+            alt={`${m.org} logo`}
+            width={m.logoWidth}
+            height={m.logoHeight}
+            className="h-full w-full object-contain"
+          />
+        </div>
+      )}
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-[var(--color-ink)]">{m.org}</p>
+        <p className="mt-0.5 font-mono text-xs text-[var(--color-mist)]">
+          {m.role}
+          {m.id && <> &middot; No. {m.id}</>}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function AchievementsList() {
   return (
     <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20">
@@ -94,14 +120,9 @@ export function AchievementsList() {
         <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-mist)]">
           Professional memberships
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROFILE.memberships.map((m) => (
-            <div key={m.org}>
-              <p className="text-sm font-medium text-[var(--color-ink)]">{m.org}</p>
-              <p className="mt-0.5 font-mono text-xs text-[var(--color-mist)]">
-                {m.role} &middot; No. {m.id}
-              </p>
-            </div>
+            <MembershipCard key={m.org} m={m} />
           ))}
         </div>
       </Reveal>

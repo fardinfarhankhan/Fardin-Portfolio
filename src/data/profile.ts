@@ -3,6 +3,16 @@
  * biographical material. Nothing here is inferred or invented.
  */
 
+export type Membership = {
+  org: string;
+  role: string;
+  /** Membership number, where one was given. */
+  id?: string;
+  logo?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+};
+
 export const PROFILE = {
   name: "Fardin Farhan Khan",
   location: "Dhaka, Bangladesh",
@@ -70,14 +80,70 @@ export const PROFILE = {
   ],
 
   memberships: [
-    { org: "The Institution of Engineers, Bangladesh (IEB)", role: "Associate Member", id: "A-29714" },
-    { org: "American Society of Civil Engineers (ASCE)", role: "Member", id: "12593046" },
-    { org: "Internet Society", role: "Member", id: "2366769" },
-    { org: "Institution of Civil Engineers (ICE)", role: "Student Member", id: "093987105" },
-    { org: "Institute of Transportation Engineers (ITE)", role: "Student Member", id: "S-1092703" },
-    { org: "American Concrete Institute (ACI)", role: "Student Member", id: "02020088" },
-    { org: "International Association of Engineers (IAENG)", role: "Member", id: "565647" },
-  ],
+    {
+      org: "The Institution of Engineers, Bangladesh (IEB)",
+      role: "Associate Member",
+      id: "A-29714",
+      logo: "/images/memberships/ieb.png",
+      logoWidth: 250,
+      logoHeight: 300,
+    },
+    {
+      org: "American Society of Civil Engineers (ASCE)",
+      role: "Member",
+      id: "12593046",
+      logo: "/images/memberships/asce.png",
+      logoWidth: 600,
+      logoHeight: 600,
+    },
+    {
+      org: "Internet Society",
+      role: "Member",
+      id: "2366769",
+      logo: "/images/memberships/internet-society.png",
+      logoWidth: 225,
+      logoHeight: 225,
+    },
+    {
+      org: "Institution of Civil Engineers (ICE)",
+      role: "Student Member",
+      id: "093987105",
+      logo: "/images/memberships/ice.jpg",
+      logoWidth: 200,
+      logoHeight: 200,
+    },
+    {
+      org: "Institute of Transportation Engineers (ITE)",
+      role: "Student Member",
+      id: "S-1092703",
+      logo: "/images/memberships/ite.jpg",
+      logoWidth: 450,
+      logoHeight: 450,
+    },
+    {
+      org: "American Concrete Institute (ACI)",
+      role: "Student Member",
+      id: "02020088",
+      logo: "/images/memberships/aci.png",
+      logoWidth: 180,
+      logoHeight: 180,
+    },
+    {
+      org: "International Association of Engineers (IAENG)",
+      role: "Member",
+      id: "565647",
+      logo: "/images/memberships/iaeng.png",
+      logoWidth: 876,
+      logoHeight: 237,
+    },
+    {
+      org: "The Commonwealth Engineers' Council (CEC)",
+      role: "Future Leader & Individual Member",
+      logo: "/images/memberships/cec.png",
+      logoWidth: 1100,
+      logoHeight: 246,
+    },
+  ] as Membership[],
 
   leadershipRoles: [
     "Founding Member — Humans of IUT",
