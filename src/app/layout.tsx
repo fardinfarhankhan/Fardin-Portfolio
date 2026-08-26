@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import { SiteNav } from "@/components/chrome/SiteNav";
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <CinematicFooter />
           </MotionRoot>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
