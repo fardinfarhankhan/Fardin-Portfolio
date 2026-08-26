@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Reveal } from "@/components/motion/Reveal";
 import { CountUp } from "@/components/motion/CountUp";
@@ -10,47 +11,6 @@ export const metadata: Metadata = {
   description:
     "Who Fardin Farhan Khan is, what he works on, and how transportation, data, and research connect across his career.",
 };
-
-const badgeWrapClass =
-  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--color-accent)]/40 text-[var(--color-accent)]";
-
-const GraduationCapIcon = () => (
-  <span aria-hidden className={badgeWrapClass}>
-    <svg viewBox="0 0 24 24" className="h-5 w-5">
-      <path
-        d="M12 5 2 9.5 12 14l10-4.5L12 5Z"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        fill="none"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 11.5V16c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M20 9.5V15" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-    </svg>
-  </span>
-);
-
-const GlobeIcon = () => (
-  <span aria-hidden className={badgeWrapClass}>
-    <svg viewBox="0 0 24 24" className="h-5 w-5">
-      <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.4" fill="none" />
-      <path d="M3.5 12h17" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-      <path
-        d="M12 3.5c2.6 2.3 4 5.3 4 8.5s-1.4 6.2-4 8.5c-2.6-2.3-4-5.3-4-8.5s1.4-6.2 4-8.5Z"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        fill="none"
-      />
-    </svg>
-  </span>
-);
 
 const ScoreArrowIcon = () => (
   <svg
@@ -84,11 +44,19 @@ function TestScoreCard({
         href={score.reportUrl}
         target="_blank"
         rel="noreferrer noopener"
-        className="group flex h-full flex-col gap-4 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-colors duration-300 hover:border-[var(--color-accent)]/60 sm:p-8"
+        className="group flex h-full flex-col gap-5 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 transition-colors duration-300 hover:border-[var(--color-accent)]/60 sm:p-8"
       >
-        <div className="flex items-center gap-3">
-          {isGRE ? <GraduationCapIcon /> : <GlobeIcon />}
-          <p className="font-display text-base font-semibold text-[var(--color-ink)] sm:text-lg">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex h-11 items-center rounded-lg bg-white px-3 py-2 shadow-sm sm:h-12">
+            <Image
+              src={score.logo}
+              alt={`${score.test} logo`}
+              width={score.logoWidth}
+              height={score.logoHeight}
+              className="h-full w-auto object-contain"
+            />
+          </div>
+          <p className="max-w-[9rem] text-right font-mono text-[0.65rem] uppercase leading-snug tracking-[0.06em] text-[var(--color-mist)]">
             {score.test}
           </p>
         </div>

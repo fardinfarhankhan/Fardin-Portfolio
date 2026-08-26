@@ -48,6 +48,9 @@ export const PROFILE = {
     {
       test: "Graduate Record Examination (GRE)",
       short: "GRE",
+      logo: "/images/scores/gre-logo.png",
+      logoWidth: 457,
+      logoHeight: 219,
       overall: "328",
       breakdown: "Quantitative 166 · Verbal 162 · Analytical Writing 3.5",
       reportUrl:
@@ -56,6 +59,9 @@ export const PROFILE = {
     {
       test: "IELTS Academic",
       short: "IELTS",
+      logo: "/images/scores/ielts-logo.webp",
+      logoWidth: 2000,
+      logoHeight: 1124,
       overall: "7.0",
       breakdown: "Listening 7.5 · Reading 7.5 · Writing 7.0 · Speaking 6.5",
       reportUrl:
