@@ -58,6 +58,9 @@ export default function ExperiencePage() {
               title={role.title}
               subtitle={role.organization}
               meta={role.period}
+              image={role.logo}
+              imageFit="contain"
+              imageAlt={`${role.organization} logo`}
             >
               <div className="max-w-3xl pb-2">
                 {role.organizationBlurb && (

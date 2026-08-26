@@ -17,8 +17,12 @@ type TimelineItemProps = {
   title: string;
   subtitle?: string;
   meta?: string;
-  /** Optional photo shown as a thumbnail next to the entry. */
+  /** Optional photo/logo shown as a thumbnail next to the entry. */
   image?: string;
+  /** "cover" crops to fill (photos); "contain" fits whole + adds a white backing (logos). Defaults to "cover". */
+  imageFit?: "cover" | "contain";
+  /** Overrides the thumbnail's alt text. Defaults to `${title} campus`. */
+  imageAlt?: string;
   /** Optional external link — e.g. an institution's official website. Makes `subtitle` clickable. */
   link?: string;
   children: ReactNode;
@@ -31,6 +35,8 @@ export function TimelineItem({
   subtitle,
   meta,
   image,
+  imageFit = "cover",
+  imageAlt,
   link,
   children,
 }: TimelineItemProps) {
@@ -67,11 +73,30 @@ export function TimelineItem({
 
         <div className="min-w-0 flex-1">
           <div className="flex items-start gap-4 sm:gap-5">
-            {image && (
-              <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] sm:h-20 sm:w-28">
-                <Image src={image} alt={`${title} campus`} fill sizes="(min-width: 640px) 112px, 80px" className="object-cover" />
-              </div>
-            )}
+            {image &&
+              (imageFit === "contain" ? (
+                <div className="flex h-14 w-20 shrink-0 items-center justify-center rounded-lg border border-[var(--color-line)] bg-white p-2 sm:h-20 sm:w-28">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={image}
+                      alt={imageAlt ?? `${title} campus`}
+                      fill
+                      sizes="(min-width: 640px) 112px, 80px"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] sm:h-20 sm:w-28">
+                  <Image
+                    src={image}
+                    alt={imageAlt ?? `${title} campus`}
+                    fill
+                    sizes="(min-width: 640px) 112px, 80px"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             <div className="min-w-0 flex-1">
               <button
                 type="button"

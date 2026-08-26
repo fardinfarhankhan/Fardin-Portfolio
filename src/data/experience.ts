@@ -6,6 +6,10 @@ export type ExperienceEntry = {
   focus?: string;
   duties: string[];
   category: "engineering-consulting" | "media-events";
+  /** Company logo, shown as a thumbnail on the experience timeline. */
+  logo?: string;
+  logoWidth?: number;
+  logoHeight?: number;
 };
 
 /**
@@ -15,6 +19,9 @@ export type ExperienceEntry = {
 export const EXPERIENCE: ExperienceEntry[] = [
   {
     organization: "SMEC International Pty Ltd.",
+    logo: "/images/experience/smec.jpg",
+    logoWidth: 1000,
+    logoHeight: 284,
     organizationBlurb:
       "A consulting company in Bangladesh providing civil, mechanical, and electrical engineering along with environmental, socioeconomic, and financial analysis, across roads, bridges, railways, airports, ports, and water resources management.",
     title: "Assistant Manager, Business Development",
@@ -35,6 +42,9 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     organization: "ETCBL Global",
+    logo: "/images/experience/etcbl-global.jpg",
+    logoWidth: 402,
+    logoHeight: 124,
     organizationBlurb:
       "An engineering consultancy specializing in transmission line and substation design, project management, and technical support for power infrastructure projects, serving local and international EPC clients.",
     title: "Executive, Business Development",
@@ -54,6 +64,9 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     organization: "Chalkboard Communications Ltd.",
+    logo: "/images/experience/chalkboard-communications.webp",
+    logoWidth: 2000,
+    logoHeight: 600,
     organizationBlurb:
       "A communication and advertising company, and a study platform, focused on client-based marketing, content creation, business-acquisition campaign activation, and product management.",
     title: "Head of Operations",
@@ -73,6 +86,9 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     organization: "Syndic Atelier Ltd.",
+    logo: "/images/experience/syndic-atelier.png",
+    logoWidth: 1424,
+    logoHeight: 373,
     organizationBlurb:
       "Focused on event planning, event management, live broadcasting, and event marketing strategies for conferences, concerts, and corporate events.",
     title: "Chief Technical Officer",
@@ -94,6 +110,9 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     organization: "Rantages.INC",
+    logo: "/images/experience/rantages.jpg",
+    logoWidth: 448,
+    logoHeight: 446,
     organizationBlurb:
       "Bangladesh's first crude-humor site, formed in 2009, with almost 10 lac (1 million) audiences in total.",
     title: "Content Editor",
