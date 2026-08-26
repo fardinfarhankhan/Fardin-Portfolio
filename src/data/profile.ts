@@ -30,9 +30,6 @@ export const PROFILE = {
   professionalOverviewContinued:
     "Professionally, I work as an Assistant Manager – Business Development at SMEC, where I contribute to large-scale infrastructure projects across the transport, water, and power sectors, funded by organizations such as ADB, the World Bank, and JICA. My role includes strategic market analysis, proposal development, project coordination, and stakeholder engagement. I have contributed to 50+ EOIs and 30+ RFPs for projects valued between USD 1M–120M, supporting the successful acquisition of approximately USD 38M in consultancy assignments. I have also engaged in media, branding, and communication initiatives across 40+ projects with organizations including United Nations Development Programme, bKash, Pathao, Ericsson, and Grameenphone.",
 
-  personalObjective:
-    "A Civil Engineer with strong analytical, organizational, and problem-solving skills. A proactive and adaptable individual with a positive “can-do” attitude, capable of working effectively both independently and within a team environment. Able to perform efficiently under pressure while maintaining professionalism, responsiveness, and commitment to quality work.",
-
   languages: [
     { name: "English", level: "Fluent in speaking and writing" },
     { name: "Bangla", level: "Native language" },
@@ -50,14 +47,19 @@ export const PROFILE = {
   testScores: [
     {
       test: "Graduate Record Examination (GRE)",
+      short: "GRE",
       overall: "328",
       breakdown: "Quantitative 166 · Verbal 162 · Analytical Writing 3.5",
+      reportUrl:
+        "https://1drv.ms/b/c/99ec525d83d72e25/IQAlLteDXVLsIICZ5GkAAAAAAc_H3Mv9Clflbew3Y4AWg0I?e=OwHOrt",
     },
     {
       test: "IELTS Academic",
+      short: "IELTS",
       overall: "7.0",
-      breakdown:
-        "Listening 7.5 · Reading 7.5 · Writing 7.0 · Speaking 6.5",
+      breakdown: "Listening 7.5 · Reading 7.5 · Writing 7.0 · Speaking 6.5",
+      reportUrl:
+        "https://1drv.ms/b/c/99ec525d83d72e25/IQAlLteDXVLsIICZzW0AAAAAAVFhtvMLCEn_MSRQFCm_JS4?e=snTRUB",
     },
   ],
 
